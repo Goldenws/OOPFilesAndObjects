@@ -17,7 +17,7 @@ namespace OOPListsAndObjects
                 mass = _mass;
             }
 
-            public string Name { get { return Name; } }
+            public string Name { get { return name; } }
             public int Mass { get { return mass; } }
 
         }
@@ -46,6 +46,26 @@ namespace OOPListsAndObjects
                     Console.WriteLine($"Planet: {planetFromList.Name}; Mass: {planetFromList.Mass}");
                 }
             }
+
+            public void FindAndRemove(string searchEntry)
+            {
+                for(int i = 0; i < planets.Count; i++)
+                {
+                    if(planets[i].Name == searchEntry)
+                    {
+                        Console.WriteLine($"Planet {planets[i].Name} has been removed.");
+                        planets.Remove(planets[i]);
+                        break;
+                    }
+                }
+
+
+            }
+
+            public void CountPlanets()
+            {
+                Console.WriteLine($"There are {planets.Count} planets on the list.");
+            }
         }
         static void Main(string[] args)
         {
@@ -70,6 +90,14 @@ namespace OOPListsAndObjects
             }
 
             newPlanetsList.PrintPlanets();
+
+            Console.WriteLine("What planet do you want to remowe?");
+            string userInput = Console.ReadLine();
+            newPlanetsList.FindAndRemove(userInput);
+
+            newPlanetsList.PrintPlanets();
+            newPlanetsList.CountPlanets();
+
         }
     }
 }
